@@ -6,8 +6,8 @@ const followHeight = getComputedStyle(follow).height
 const target = document.querySelector('[fc-cursor = target]')
 const buttons = document.querySelectorAll('[fc-cursor = button]')
   
-const cursorMoveDuration = target.getAttribute('fc-cursor-move-duration') ?? '0.7'
-const cursorMoveEasing = target.getAttribute('fc-cursor-move-easing') ?? 'power2.out'
+const cursorFollowMoveDuration = target.getAttribute('fc-cursor-follow-move-duration') ?? '0.7'
+const cursorFollowMoveEasing = target.getAttribute('fc-cursor-follow-move-easing') ?? 'power2.out'
   
 const cursorHoverDuration = target.getAttribute('fc-cursor-hover-duration') ?? '0.3'
 const cursorHoverEasing = target.getAttribute('fc-cursor-hover-easing') ?? 'power2.out'
@@ -108,8 +108,8 @@ target.addEventListener('mousemove', function(event)
     gsap.to(follow, {
       left: event.clientX + "px",
       top: offsetY + "px",
-      duration: cursorMoveDuration,
-      ease: cursorMoveEasing
+      duration: cursorFollowMoveDuration,
+      ease: cursorFollowMoveEasing
     })
   }
 })
