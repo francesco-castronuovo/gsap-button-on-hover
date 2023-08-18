@@ -1,4 +1,4 @@
-.cursor,
-.follow {
+[fc-cursor = cursor],
+[fc-cursor = follow] {
     pointer-events: none;
 }
