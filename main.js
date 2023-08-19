@@ -1,13 +1,13 @@
 const cursor = document.querySelector('[fc-cursor = cursor]')
 const cursorBackgroundColor = getComputedStyle(cursor).backgroundColor
-const follow = document.querySelector('[fc-cursor = follow]')
-const followWidth = getComputedStyle(follow).width
-const followHeight = getComputedStyle(follow).height
+const follower = document.querySelector('[fc-cursor = follower]')
+const followerWidth = getComputedStyle(follower).width
+const followerHeight = getComputedStyle(follower).height
 const target = document.querySelector('[fc-cursor = target]')
 const buttons = document.querySelectorAll('[fc-cursor = button]')
   
-const cursorFollowMoveDuration = target.getAttribute('fc-cursor-follow-move-duration') ?? '0.7'
-const cursorFollowMoveEasing = target.getAttribute('fc-cursor-follow-move-easing') ?? 'power2.out'
+const cursorFollowerMoveDuration = target.getAttribute('fc-cursor-follower-move-duration') ?? '0.7'
+const cursorFollowerMoveEasing = target.getAttribute('fc-cursor-follower-move-easing') ?? 'power2.out'
   
 const cursorHoverDuration = target.getAttribute('fc-cursor-hover-duration') ?? '0.3'
 const cursorHoverEasing = target.getAttribute('fc-cursor-hover-easing') ?? 'power2.out'
@@ -15,7 +15,7 @@ const cursorHoverEasing = target.getAttribute('fc-cursor-hover-easing') ?? 'powe
 const cursorOpacityDuration = target.getAttribute('fc-cursor-opacity-duration') ?? '0.2'
 const cursorOpacityEasing = target.getAttribute('fc-cursor-opacity-easing') ?? 'power2.out'
   
-follow.style.opacity = 0
+follower.style.opacity = 0
 cursor.style.opacity = 0
   
 for(const button of buttons)
@@ -28,7 +28,7 @@ for(const button of buttons)
     const width = t.clientWidth
     const height = t.clientHeight
 
-    gsap.to(follow, {
+    gsap.to(follower, {
       left: left + 'px',
       top: top + 'px',
       width: width + 'px',
@@ -48,9 +48,9 @@ for(const button of buttons)
 
   button.addEventListener('mouseleave', function(event)
   {        
-    gsap.to(follow, {
-      width: followWidth,
-      height: followHeight,
+    gsap.to(follower, {
+      width: followerWidth,
+      height: followerHeight,
       borderRadius: '100%', 
       duration: cursorHoverDuration,
       ease: cursorHoverEasing
@@ -66,7 +66,7 @@ for(const button of buttons)
 
 target.addEventListener('mouseenter', function(event)
 {
-  gsap.to(follow, {
+  gsap.to(follower, {
     opacity: 1,
     duration: cursorOpacityDuration,
     ease: cursorOpacityEasing
@@ -81,7 +81,7 @@ target.addEventListener('mouseenter', function(event)
   
 target.addEventListener('mouseleave', function(event)
 {
-  gsap.to(follow, {
+  gsap.to(follower, {
     opacity: 0,
     duration: cursorOpacityDuration,
     ease: cursorOpacityEasing
@@ -105,11 +105,11 @@ target.addEventListener('mousemove', function(event)
 
   if(t.tagName !== 'A')
   {	
-    gsap.to(follow, {
+    gsap.to(follower, {
       left: event.clientX + "px",
       top: offsetY + "px",
-      duration: cursorFollowMoveDuration,
-      ease: cursorFollowMoveEasing
+      duration: cursorFollowerMoveDuration,
+      ease: cursorFollowerMoveEasing
     })
   }
 })
